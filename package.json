@@ -1,0 +1,41 @@
+{
+  "name": "assume-react",
+  "version": "0.0.0",
+  "description": "Extends assume with assertions for React components",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec --compilers js:babel/register ./test.js",
+    "watch": "mocha --watch --reporter spec --compilers js:babel/register ./test.js",
+    "coverage": "istanbul cover _mocha -- ./test.js --compilers js:babel/register",
+    "test-travis": "istanbul cover _mocha --report lcovonly -- ./test.js --compilers js:babel/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swaagie/assume-react"
+  },
+  "keywords": [
+    "react",
+    "assume",
+    "testing",
+    "shallow",
+    "render",
+    "css",
+    "selectors",
+    "helpers",
+    "test"
+  ],
+  "author": "Martijn Swaagman <info@martijnswaagman.nl> (http://moveo.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/swaagie/assume-react/issues"
+  },
+  "homepage": "https://github.com/swaagie/assume-react",
+  "devDependencies": {
+    "assume": "1.3.x",
+    "babel-core": "~6.1.20",
+    "istanbul": "0.4.x",
+    "mocha": "2.3.x",
+    "pre-commit": "1.1.x",
+    "react": "~0.14.2"
+  }
+}
