@@ -1,10 +1,7 @@
-'use strict';
-
 import TestUtils from 'react-addons-test-utils';
-import React from 'react';
 
 export default function pluginAssumeReact(assume, util) {
-  let a = assume().a;
+  const a = assume().a;
 
   /**
    * Is the value allowed for the React Component.propTypes.
@@ -43,8 +40,8 @@ export default function pluginAssumeReact(assume, util) {
    * @param {String} msg Custom message
    * @api public
    */
-  assume.add('prop, props', function props(prop, value, msg) {
-    let test = this.clone(this.value.props);
+  assume.add('prop, props', function props(prop, value) {
+    const test = this.clone(this.value.props);
 
     return test.property.apply(test, arguments);
   });
