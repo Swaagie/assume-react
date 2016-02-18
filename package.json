@@ -2,9 +2,9 @@
   "name": "assume-react",
   "version": "0.0.0",
   "description": "Extends assume with assertions for React components",
-  "main": "dist/index.js",
+  "main": "dist.js",
   "scripts": {
-    "prepublish": "mkdir -p dist && babel --presets es2015 -o ./dist/index.js ./index.js",
+    "prepublish": "mkdir -p dist && babel --presets es2015 -o ./dist.js ./index.js",
     "test": "mocha --reporter spec --compilers js:babel/register ./test.js",
     "watch": "mocha --watch --reporter spec --compilers js:babel/register ./test.js",
     "coverage": "istanbul cover _mocha -- ./test.js --compilers js:babel/register",
@@ -38,6 +38,7 @@
     "babel-preset-es2015": "~6.1.18",
     "istanbul": "~0.4.0",
     "mocha": "~2.3.0",
+    "mootools-core": "git+ssh://git@github.com:mootools/mootools-core.git#1.5.2",
     "pre-commit": "~1.1.0",
     "react": "~0.14.2",
     "react-addons-test-utils": "~0.14.2"

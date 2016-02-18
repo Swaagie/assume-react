@@ -3,6 +3,9 @@
 import TestUtils from 'react-addons-test-utils';
 import React from 'react';
 
+import { Slick } from 'mootools-core/Source/Slick/Slick.Parser';
+import Tree from './tree';
+
 export default function pluginAssumeReact(assume, util) {
   let a = assume().a;
 
@@ -62,5 +65,16 @@ export default function pluginAssumeReact(assume, util) {
     }
 
     return a.call(this, of, msg);
+  });
+
+  assume.add('child', function child(selector) {
+    let parsed = Slick.parse(selector);
+    let tree = new Tree(this.value);
+
+    let matches = tree.findAll(
+      parsed.expressions
+    ).map(node => this.clone(node));
+
+    return matches.length === 1 ? matches[0] : matches;
   });
 }
