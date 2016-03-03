@@ -32,6 +32,10 @@ export default function pluginAssumeReact(assume, util) {
    * @api public
    */
   assume.add('elementOfType', function allowProp(type, msg) {
+    if (typeof type === 'string') {
+      return this.test(this.value.type.name === type, msg);
+    }
+
     return this.test(TestUtils.isElementOfType(this.value, type), msg);
   });
 
