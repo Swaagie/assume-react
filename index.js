@@ -63,7 +63,20 @@ export default function pluginAssumeReact(assume, util) {
     const test = this.clone(this.value.props.className);
 
     return test.includes(value);
-  })
+  });
+
+  /**
+   * Check if the Component has child.
+   *
+   * @param {String} value Value to test against
+   * @returns {Assert} reference to self
+   * @api public
+   */
+  assume.add('child, children', function children(value) {
+    const test = this.clone(this.value.props.children);
+
+    return test.includes(value);
+  });
 
   /**
    * Proxy type of check to test against React Elements.
