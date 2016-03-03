@@ -1,5 +1,6 @@
 /* eslint no-invalid-this: 0 */
 import TestUtils from 'react-addons-test-utils';
+import React from 'react';
 
 export default function pluginAssumeReact(assume, util) {
   const a = assume().a;
@@ -31,12 +32,17 @@ export default function pluginAssumeReact(assume, util) {
    * @returns {Assert} reference to self
    * @api public
    */
-  assume.add('elementOfType', function allowProp(type, msg) {
-    if (typeof type === 'string') {
-      return this.test(this.value.type.name === type, msg);
+  assume.add('elementOfType', function allowProp(element, msg) {
+    if (typeof element === 'string') {
+      return this.test(this.value === element || this.value.type.name === element, msg);
     }
 
-    return this.test(TestUtils.isElementOfType(this.value, type), msg);
+    //
+    // Unpack the element type if required.
+    //
+    element = element.type || element;
+
+    return this.test(TestUtils.isElementOfType(this.value, element), msg);
   });
 
   /**
@@ -72,10 +78,17 @@ export default function pluginAssumeReact(assume, util) {
    * @returns {Assert} reference to self
    * @api public
    */
-  assume.add('child, children', function children(value) {
-    const test = this.clone(this.value.props.children);
+  assume.add('child, children', function childs(value) {
+    let children = React.Children.toArray(this.value.props.children);
+    const self = this;
 
-    return test.includes(value);
+    if (!Array.isArray(value)) {
+      value = [ value ];
+    }
+
+    return util.each(children, function each(child, i) {
+      self.clone(child).elementOfType(value[i]);
+    });
   });
 
   /**
