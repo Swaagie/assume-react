@@ -1,5 +1,7 @@
 # assume-react
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Swaagie/assume-react.svg)](https://greenkeeper.io/)
+
 Extends [Assume][assume] with assertions for React components
 
 ### Install
