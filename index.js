@@ -1,5 +1,5 @@
 /* eslint no-invalid-this: 0 */
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import React from 'react';
 
 export default function pluginAssumeReact(assume, util) {
